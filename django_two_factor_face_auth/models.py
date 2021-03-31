@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 import time
 import os
 
@@ -19,3 +21,9 @@ class UserFaceImage(models.Model):
 class UserFile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     ufile = models.FileField(upload_to=content_ufile_name, blank=False)
+    def ufilename(self):
+        return os.path.basename(self.ufile.name)
+
+@receiver(post_delete, sender=UserFile)
+def submission_delete(sender, instance, **kwargs):
+    instance.file.delete(False) 

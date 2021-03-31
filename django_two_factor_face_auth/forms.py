@@ -27,6 +27,6 @@ class AuthenticationForm(AuthenticationForm):
     image = forms.CharField(widget=forms.HiddenInput())
 
 class UploadFileForm(forms.Form):
-    upfile = forms.FileField()
+    upfile = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
     
