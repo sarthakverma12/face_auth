@@ -1,0 +1,13 @@
+<html>
+    <title>
+        Upload file
+    </title>
+    <body>
+        <form id='uploadform' method="post" action="/accounts/upload/" enctype="multipart/form-data">
+            {% csrf_token %}
+        
+            {{ form }}
+            <input type = 'submit'>
+        </form>
+    </body>
+</html>

@@ -21,5 +21,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('accounts/register/', views.register, name='register'),
     path('accounts/login/', views.face_login, name='login'),
+    path('accounts/menu/', views.menu, name='menu'),
     path('accounts/', include('django.contrib.auth.urls')),
+    # path('accounts/files/', views.viewfiles, name='viewfiles'),
+    path('accounts/upload/', views.upload, name='upload'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

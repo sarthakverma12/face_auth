@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import UserFaceImage
+from .models import UserFaceImage, UserFile
 from .utils import base64_file
 from .encrypt import encrypti
 from io import BytesIO
@@ -25,3 +25,8 @@ class UserCreationForm(UserCreationForm):
 
 class AuthenticationForm(AuthenticationForm):
     image = forms.CharField(widget=forms.HiddenInput())
+
+class UploadFileForm(forms.Form):
+    upfile = forms.FileField()
+
+    

@@ -8,6 +8,14 @@ def content_file_name(instance, filename):
     name, extension = os.path.splitext(filename)
     return os.path.join('content', instance.user.username, timestr + extension)
 
+def content_ufile_name(instance, filename):
+    name, extension = os.path.splitext(filename)
+    return os.path.join('content', instance.user.username, filename)
+
 class UserFaceImage(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.FileField(upload_to=content_file_name, blank=False)
+
+class UserFile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    ufile = models.FileField(upload_to=content_ufile_name, blank=False)
