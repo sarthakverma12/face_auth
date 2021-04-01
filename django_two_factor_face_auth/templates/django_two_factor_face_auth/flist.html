@@ -40,12 +40,12 @@
             alert(catid);
             $.ajax(
             {
+             headers: { "X-CSRFToken": '{{csrf_token}}' },
              type:"POST",
              url: "/accounts/fdelete/",
              contentType: "application/json; charset=utf-8",
              data: JSON.stringify({
                  fnames: catid,
-                //  csrfmiddlewaretoken: '{{ csrf_token }}'
               }),
             success: function( data ) 
             {

@@ -81,7 +81,6 @@ def viewfiles(request):
         return render(request, 'django_two_factor_face_auth/flist.html', context)
 
 @login_required()
-@csrf_exempt
 def fdelete(request):
     if request.method == 'POST':
         unic = request.body.decode('utf-8')
@@ -91,9 +90,7 @@ def fdelete(request):
         print(files)
         sf = (UserFile.objects.filter(user = request.user))
         for f in sf:
-            # print(f.ufilename)
             if f.ufilename() in files:
-                print('hey')
                 f.delete()
         return HttpResponse(content)
 
