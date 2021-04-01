@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.conf import settings
-from .forms import UserCreationForm, AuthenticationForm, UploadFileForm
+from .forms import UserCreationForm, AuthenticationForm, UploadFileForm, Searchform
 from .authenticate import FaceIdAuthBackend
 from .utils import prepare_image
 from django.http import HttpResponse
@@ -66,7 +66,7 @@ def upload(request):
             for ufc in flist:
                uf = UserFile(user = request.user, ufile = ufc)
                uf.save()
-            return HttpResponse('Files uploaded successfully')
+            return redirect('/accounts/files/')
     else:
         form = UploadFileForm()
     
@@ -77,7 +77,8 @@ def upload(request):
 def viewfiles(request):
     if request.method == 'GET':
         flist = UserFile.objects.filter(user = request.user)
-        context = {'filelist': flist}
+        form = Searchform()
+        context = {'filelist': flist , 'form' : form} 
         return render(request, 'django_two_factor_face_auth/flist.html', context)
 
 @login_required()
@@ -94,5 +95,20 @@ def fdelete(request):
                 f.delete()
         return HttpResponse(content)
 
-
-        
+@login_required()
+def fsearch(request):
+    if request.method == 'POST':
+        form = Searchform(request.POST)
+        nflist = []
+        if form.is_valid():
+            keyword = form.cleaned_data['keyword']
+            flist = UserFile.objects.filter(user = request.user)
+            for f in flist:
+                if keyword in f.ufilename():
+                    nflist.append(f)
+        else:
+            print("invalid")
+        form = Searchform()
+        context = {'filelist': nflist, 'form' : form}
+        return render(request, 'django_two_factor_face_auth/flist.html', context)
+    

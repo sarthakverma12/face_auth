@@ -26,6 +26,7 @@ urlpatterns = [
     path('accounts/files/', views.viewfiles, name='viewfiles'),
     path('accounts/upload/', views.upload, name='upload'),
     path('accounts/fdelete/', views.fdelete, name='fdelete'),
+    path('accounts/fsearch/', views.fsearch, name='fsearch'),
     # path('accounts/fdownload/', views.fdownload, name='fdownload'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
