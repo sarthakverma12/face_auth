@@ -6,9 +6,11 @@ from .authenticate import FaceIdAuthBackend
 from .utils import prepare_image
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from .utils import base64_file
 from .models import UserFile
 from io import BytesIO
+import json
 
 def register(request):
     if  request.method == 'POST':
@@ -78,7 +80,22 @@ def viewfiles(request):
         context = {'filelist': flist}
         return render(request, 'django_two_factor_face_auth/flist.html', context)
 
-# @login_required()
-# def fdelete(request):
-#     if request.method == 'POST':
+@login_required()
+@csrf_exempt
+def fdelete(request):
+    if request.method == 'POST':
+        unic = request.body.decode('utf-8')
+        body = json.loads(unic)
+        content = body['fnames']
+        files = content.split()
+        print(files)
+        sf = (UserFile.objects.filter(user = request.user))
+        for f in sf:
+            # print(f.ufilename)
+            if f.ufilename() in files:
+                print('hey')
+                f.delete()
+        return HttpResponse(content)
+
+
         

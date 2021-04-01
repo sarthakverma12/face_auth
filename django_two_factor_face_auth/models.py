@@ -26,4 +26,4 @@ class UserFile(models.Model):
 
 @receiver(post_delete, sender=UserFile)
 def submission_delete(sender, instance, **kwargs):
-    instance.file.delete(False) 
+    instance.ufile.delete(False) 

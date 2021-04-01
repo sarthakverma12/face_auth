@@ -12,17 +12,48 @@
     <body>
         <table>
             <tr>
+              <th></th>
               <th>File Name</th>
-              <th>Delete</th>
-              <th>Download</th>
+              <!-- <th>Delete</th>
+              <th>Download</th> -->
             </tr>
             {% for i in filelist %}
             <tr>
+              <td><input type="checkbox" class="select" data-fid="{{i.ufilename}}"></td>
               <td>{{i.ufilename}}</td>
-              <td><a href = '/accounts/fdelete/'> Delete </a></td>
-              <td><a href = '/accounts/fdownload/'> Download </a></td>
+              <!-- <td><a href = '/accounts/fdelete/'> Delete </a></td>
+              <td><a href = '/accounts/fdownload/'> Download </a></td> -->
             </tr>
             {% endfor %}
        </table>
+            <button type="button" id="delete">Delete</button>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script type="text/javascript">
+            $('#delete').click(function(){
+            let catid = "";
+            $('input[type=checkbox]').each(function(){
+                 if($(this).is(":checked")){
+                   catid+=($(this).attr('data-fid'));
+                   catid+=" ";
+                 }
+            });
+            alert(catid);
+            $.ajax(
+            {
+             type:"POST",
+             url: "/accounts/fdelete/",
+             contentType: "application/json; charset=utf-8",
+             data: JSON.stringify({
+                 fnames: catid,
+                //  csrfmiddlewaretoken: '{{ csrf_token }}'
+              }),
+            success: function( data ) 
+            {
+                alert("successful");
+                
+            }
+            })
+            });
+            </script>
     </body>
 </html>
