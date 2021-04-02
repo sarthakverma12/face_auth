@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.conf import settings
 from .forms import UserCreationForm, AuthenticationForm, UploadFileForm, Searchform
 from .authenticate import FaceIdAuthBackend
 from .utils import prepare_image
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from .utils import base64_file
@@ -112,3 +112,8 @@ def fsearch(request):
         context = {'filelist': nflist, 'form' : form}
         return render(request, 'django_two_factor_face_auth/flist.html', context)
     
+@login_required()
+def fdownload(request, dfile, user):
+    if request.user.username == user:
+        f = get_object_or_404(UserFile, ufile = "content/"+user+'/'+dfile)
+        return FileResponse(f.ufile)

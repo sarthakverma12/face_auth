@@ -20,15 +20,13 @@
             <tr>
               <th></th>
               <th>File Name</th>
-              <!-- <th>Delete</th>
-              <th>Download</th> -->
+              <th>Download</th>
             </tr>
             {% for i in filelist %}
             <tr>
               <td><input type="checkbox" class="select" data-fid="{{i.ufilename}}"></td>
               <td>{{i.ufilename}}</td>
-              <!-- <td><a href = '/accounts/fdelete/'> Delete </a></td>
-              <td><a href = '/accounts/fdownload/'> Download </a></td> -->
+              <td><a href = '{{i.ufile.url}}' download> Download </a></td>
             </tr>
             {% endfor %}
        </table>
