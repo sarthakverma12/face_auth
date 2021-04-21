@@ -1,13 +1,37 @@
+<!DOCTYPE html>
 <html>
+    <head>
+        <meta charset = "utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        {% load crispy_forms_tags %}
+        {% load static %}
+
     <title>
         Upload file
     </title>
+    </head>
     <body>
+        <nav class = "navbar navbar-default">
+        <div class = "container-fluid">
+            <div class="navbar-header">
+                <img class = "navbar-brand" src = "{% static 'usericon.png' %}"></p>
+              </div>
+        <ul class = "nav navbar-nav navbar-right">
+        <li><a href = "{% url 'menu' %}"> Go back to menu </a></li>
+        </ul>
+        </div>
+        </nav>
+        <div class = "form" >
         <form id='uploadform' method="post" action="/accounts/upload/" enctype="multipart/form-data">
+
             {% csrf_token %}
-        
-            {{ form }}
+            {{ form|crispy }}
             <input type = 'submit'>
+
         </form>
+        </div>
+       
     </body>
 </html>

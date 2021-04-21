@@ -117,3 +117,11 @@ def fdownload(request, dfile, user):
     if request.user.username == user:
         f = get_object_or_404(UserFile, ufile = "content/"+user+'/'+dfile)
         return FileResponse(f.ufile)
+
+def index(request):
+    if request.method == 'GET':
+        return render(request, 'django_two_factor_face_auth/index.html')
+
+def about(request):
+    if request.method == 'GET':
+        return render(request, 'django_two_factor_face_auth/about.html')

@@ -30,6 +30,6 @@ class UploadFileForm(forms.Form):
     upfile = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
 class Searchform(forms.Form):
-    keyword = forms.CharField(label = 'Enter keyword', widget=forms.TextInput(attrs={'placeholder': 'Search..'}))
+    keyword = forms.CharField(label = "", widget=forms.TextInput(attrs={'placeholder': 'Search..'}))
 
     

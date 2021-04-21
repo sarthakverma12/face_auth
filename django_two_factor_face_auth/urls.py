@@ -19,8 +19,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('', views.index, name = 'index'),
     path('accounts/register/', views.register, name='register'),
     path('accounts/login/', views.face_login, name='login'),
+    path('about/', views.about, name='about'),
     path('accounts/menu/', views.menu, name='menu'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/files/', views.viewfiles, name='viewfiles'),
