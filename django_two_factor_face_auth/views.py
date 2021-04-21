@@ -88,7 +88,6 @@ def fdelete(request):
         body = json.loads(unic)
         content = body['fnames']
         files = content.split()
-        print(files)
         sf = (UserFile.objects.filter(user = request.user))
         for f in sf:
             if f.ufilename() in files:
