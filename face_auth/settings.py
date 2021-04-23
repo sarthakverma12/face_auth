@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_two_factor_face_auth',
-    'crispy_forms'
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -123,4 +123,7 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/accounts/login/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#added by amandeeop
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -13,13 +13,13 @@
     </title>
     </head>
     <body>
-        <nav class = "navbar navbar-default">
+        <nav class = "navbar navbar-inverse">
         <div class = "container-fluid">
-            <div class="navbar-header">
+            {% comment %} <div class="navbar-header">
                 <img class = "navbar-brand" src = "{% static 'usericon.png' %}"></p>
-              </div>
-        <ul class = "nav navbar-nav navbar-right">
-        <li><a href = "{% url 'menu' %}"> Go back to menu </a></li>
+              </div> {% endcomment %}
+        <ul class = "nav navbar-nav navbar-left">
+        <li class="active"><a href = "{% url 'menu' %}">Menu</a></li>
         </ul>
         </div>
         </nav>

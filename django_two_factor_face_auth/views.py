@@ -123,4 +123,4 @@ def index(request):
 
 def about(request):
     if request.method == 'GET':
-        return render(request, 'django_two_factor_face_auth/about.html')
+        return render(request, 'django_two_factor_face_auth/about.html',{'title':'About'})

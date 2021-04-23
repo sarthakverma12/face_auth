@@ -10,22 +10,31 @@
         {% load crispy_forms_tags %}
     </head>
     <body>
-        <nav class="navbar navbar-default">
+
+
+        <nav class="navbar navbar-inverse">
         <div class = "container-fluid">
-        <ul class = "nav navbar-nav navbar-left">
-        <li>
-        <form class = "navbar-form" id='searchform' method="post" action="/accounts/fsearch/" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{form|crispy}}
-          <input class = "form-control mr-sm-2" type = 'submit' value="Search">
-       </form>
-      </li>
-      </ul>
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'index'%}">SQUER-J</a>
+          </div>
         <ul class = "nav navbar-nav navbar-right">
-        <li><a href = "{% url 'menu' %}"> Go back to menu </a> </li>
+        <li>
+          <form class = "navbar-form" id='searchform' method="post" action="/accounts/fsearch/" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form|crispy}}
+            <input class = "form-control mr-sm-2" type = 'submit' value="Search">
+          </form>
+        </li>
+      </ul>
+        <ul class = "nav navbar-nav navbar-left">
+        <li class = "active"><a href = "{% url 'menu' %}">Menu</a> </li>
        </ul>
       </div>
        </nav>
+
+
+
+
        <div class = "center-block" style="width: 70%; border: solid; border-width: 1px; padding: 1%">
         <table class = "table table-dark">
             <thead>
@@ -49,6 +58,9 @@
             <button type="button" id="delete" class="btn btn-danger" >Delete selected files</button>
           </div>
         </div>
+
+
+
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
             <script type="text/javascript">
             $('#delete').click(function(){
