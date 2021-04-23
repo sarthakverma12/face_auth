@@ -26,3 +26,4 @@ function handleSuccess(stream) {
   loginButton.disabled = false;
   video.srcObject = stream;
 }
+

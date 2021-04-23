@@ -31,8 +31,11 @@ urlpatterns = [
     path('accounts/fdelete/', views.fdelete, name='fdelete'),
     path('accounts/fsearch/', views.fsearch, name='fsearch'),
     path('content/<str:user>/<str:dfile>/', views.fdownload, name='fdownload'),
-    path('logout/',auth_views.LogoutView.as_view(template_name='django_two_factor_face_auth/logout.html'),name='logout'),
+    path('logout/',auth_views.LogoutView.as_view(),name='logout'),
 
     # path('accounts/fdownload/', views.fdownload, name='fdownload'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+# template_name='django_two_factor_face_auth/logout.html'
