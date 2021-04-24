@@ -17,6 +17,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    
 
     {% if title %}
         <title>
@@ -27,7 +30,6 @@
     {% endif %}
 	<style>
 
-{% load static %}
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 body{
     background-size: 1800px 900px;
@@ -83,7 +85,10 @@ body{
 
 <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'index'%}">CQRj</a>
+        <a class="navbar-brand" href="{% url 'index'%}">
+        <img src="{% static 'website.png'%}" width="30" height="30" class="d-inline-block align-top" alt="#">
+        CQRj
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
