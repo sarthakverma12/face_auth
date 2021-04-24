@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+admin.site.site_header = "CQRj Admin"
+admin.site.index_title = "CQRj Admin"
+admin.site.site_title = "Welcome to CQRj administration"
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('django_two_factor_face_auth.urls')),
