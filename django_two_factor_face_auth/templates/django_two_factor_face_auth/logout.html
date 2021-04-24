@@ -1,0 +1,12 @@
+{% extends 'django_two_factor_face_auth/index.html' %}
+{% block content %}
+
+    <div class="border-top pt-3">
+    <h3>You have been logged out
+    <small class="text-muted">
+    <br>
+    <a class='ml-2' href="{% url 'login' %}">Log in again?</a>
+    </small>
+    </div>
+    </h3>
+{% endblock %}

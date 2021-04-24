@@ -27,7 +27,8 @@ class AuthenticationForm(AuthenticationForm):
     image = forms.CharField(widget=forms.HiddenInput())
 
 class UploadFileForm(forms.Form):
-    upfile = forms.FileField(label = "Choose files", widget=forms.ClearableFileInput(attrs={'multiple': True , 'class': 'form-control'} ))
+    upfile = forms.FileField(label = "Choose files", widget=forms.ClearableFileInput(attrs={'multiple': True , 'class': 'form-control' ,'position':'relative'} ))
+    
 
 class Searchform(forms.Form):
     keyword = forms.CharField(label = "", widget=forms.TextInput(attrs={'placeholder': ''}))

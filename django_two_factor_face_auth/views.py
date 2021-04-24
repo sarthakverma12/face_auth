@@ -79,7 +79,7 @@ def viewfiles(request):
         flist = UserFile.objects.filter(user = request.user)
         form = Searchform()
         context = {'filelist': flist , 'form' : form} 
-        return render(request, 'django_two_factor_face_auth/flist.html', context)
+        return render(request, 'django_two_factor_face_auth/flist_new.html', context)
 
 @login_required()
 def fdelete(request):
@@ -109,7 +109,7 @@ def fsearch(request):
             print("invalid")
         form = Searchform()
         context = {'filelist': nflist, 'form' : form}
-        return render(request, 'django_two_factor_face_auth/flist.html', context)
+        return render(request, 'django_two_factor_face_auth/log.html', context)
     
 @login_required()
 def fdownload(request, dfile, user):

@@ -6,10 +6,23 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
         <title>View files</title>
         {% load crispy_forms_tags %}
+    <style>
+    body{
+          background-size: 1800px 900px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+    }
+</style>
+
+
+
     </head>
-    <body>
+    {% load static %}
+    <body style="background-image: url('{% static "bgimg.jpg"%}')";>
 
 
         <nav class="navbar navbar-inverse">
@@ -18,7 +31,7 @@
             <a class="navbar-brand" href="{% url 'index'%}">SQUER-J</a>
           </div>
         <ul class = "nav navbar-nav navbar-right">
-        <li>
+          <li>
           <form class = "navbar-form" id='searchform' method="post" action="/accounts/fsearch/" enctype="multipart/form-data">
             {% csrf_token %}
             {{form|crispy}}
@@ -30,34 +43,34 @@
         <li class = "active"><a href = "{% url 'menu' %}">Menu</a> </li>
        </ul>
       </div>
-       </nav>
+      </nav>
 
 
 
 
-       <div class = "center-block" style="width: 70%; border: solid; border-width: 1px; padding: 1%">
+      <div class = "center-block" style="width: 70%; border: solid; border-width: 1px; padding: 1%">
         <table class = "table table-dark">
             <thead>
-            <tr>
-              <th>Select</th>
-              <th>File Name</th>
-              <th>Download</th>
-            </tr>
+              <tr>
+                <th>Select</th>
+                <th>File Name</th>
+                <th>Download</th>
+              </tr>
             </thead>
             <tbody>
-            {% for i in filelist %}
-            <tr>
-              <td><input type="checkbox" class="select" data-fid="{{i.ufilename}}"></td>
-              <td>{{i.ufilename}}</td>
-              <td><a href = '{{i.ufile.url}}' download> <span class = "glyphicon glyphicon-download" style = "font-size: large;"></span>  </a></td>
-            </tr>
-            {% endfor %}
-          </tbody>
-       </table>
-         <div class = "text-center">
-            <button type="button" id="delete" class="btn btn-danger" >Delete selected files</button>
+              {% for i in filelist %}
+                <tr>
+                  <td><input type="checkbox" class="select" data-fid="{{i.ufilename}}"></td>
+                  <td>{{i.ufilename}}</td>
+                  <td><a href = '{{i.ufile.url}}' download> <span class = "glyphicon glyphicon-download" style = "font-size: large;"></span>  </a></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+          <div class = "text-center">
+              <button type="button" id="delete" class="btn btn-danger" >Delete selected files</button>
           </div>
-        </div>
+      </div>
 
 
 
