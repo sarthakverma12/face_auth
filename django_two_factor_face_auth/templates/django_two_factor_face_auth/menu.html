@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -18,104 +19,115 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
-   <title>Menu</title>
+    <title>Menu</title>
     <link rel="icon" href="{% static 'favicon.ico' %}">
-<style>
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-body{
-    background-size: 1800px 900px;
-    background-repeat: no-repeat;
-    background-position: top;
-    background-attachment: fixed;    
-    margin: 0;
-    font-size: .9rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #212529;
-    text-align: left;
-    background-color: #f5f8fa;
-}
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-.navbar-laravel
-{
-    box-shadow: 0 2px 4px rgba(0,0,0,.04);
-}
+        body {
+            background-size: 1800px 900px;
+            background-repeat: no-repeat;
+            background-position: top;
+            background-attachment: fixed;
+            margin: 0;
+            font-size: .9rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #212529;
+            text-align: left;
+            background-color: #f5f8fa;
+        }
 
-.navbar-brand , .nav-link, .my-form, .login-form
-{
-    font-family: Raleway, sans-serif;
-}
+        .navbar-laravel {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .04);
+        }
 
-.my-form
-{
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-}
+        .navbar-brand,
+        .nav-link,
+        .my-form,
+        .login-form {
+            font-family: Raleway, sans-serif;
+        }
 
-.my-form .row
-{
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.login-form
-{
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-}
-
-.login-form .row
-{
-    margin-left: 0;
-    margin-right: 0;
-}
-
-</style>
+        .card_ {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+    </style>
 </head>
 {% load static %}
-<body style="background-image: url('{% static "bgimg.jpg"%}')";>
 
-<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-    <div class="container">
-        <a class="navbar-brand" href="{% url 'index'%}">
-        <img src="{% static 'website.png'%}" width="30" height="30" class="d-inline-block align-top" alt="#">
-        CQRj</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<body style="background-image: url('{% static " imgicon.jpg"%}')";>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			
-			<ul class="navbar-nav me-auto">
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="{% url 'index'%}">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" href={% url 'about'%}>About</a>
-				</li>
-                
-                <li class="nav-item">
-                    <a class="nav-link active" href="/accounts/upload/">Upload</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/accounts/files/">View files</a>
-                </li>
-          
-			</ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
-                </li>
-            </ul>               
+    <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index'%}">
+                <img src="{% static 'website.png'%}" width="30" height="30" class="d-inline-block align-top" alt="#">
+                CQRj</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'index'%}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href={% url 'about' %}>About</a>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                </ul>
+
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
+    <main class='card_'>
+        <div class="container pt-5">
+            <div class="card-deck mb-3 text-center">
+                <div class="card mb-4 box-shadow">
+
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ </small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>20 users included</li>
+                            <li>10 GB of storage</li>
+                            <li>Priority email support</li>
+                            <li>Help center access</li>
+                        </ul>
+                        <a role="button" class="btn btn-lg btn-block btn-outline-dark " href="/accounts/upload/">Upload
+                            files</a>
+                    </div>
+                </div>
+                <div class="card mb-4 box-shadow">
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>30 users included</li>
+                            <li>15 GB of storage</li>
+                            <li>Phone and email support</li>
+                            <li>Help center access</li>
+                        </ul>
+                        <a role="button" class="btn btn-lg btn-block btn-outline-dark" href="/accounts/files/">View
+                            files</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
 
 
 </body>
+
 </html>
 
 
@@ -138,7 +150,7 @@ body{
 
 
 
-                                                                                <!-- This was before 500BC
+<!-- This was before 500BC
 
 <!DOCTYPE html>
 <html>

@@ -1,14 +1,15 @@
 {% load crispy_forms_tags %}
 <!doctype html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -17,162 +18,164 @@
 
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-   <title>Menu</title>
+    <title>Menu</title>
 
-<style>
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-body{
-    background-size: 1800px 900px;
-    background-repeat: no-repeat;
-    background-position: top;
-    background-attachment: fixed;
-    margin: 0;
-    font-size: .9rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #212529;
-    text-align: left;
-    background-color: #f5f8fa;
-}
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-.navbar-laravel
-{
-    box-shadow: 0 2px 4px rgba(0,0,0,.04);
-}
+        body {
+            background-size: 1800px 900px;
+            background-repeat: no-repeat;
+            background-position: top;
+            background-attachment: fixed;
+            margin: 0;
+            font-size: .9rem;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #212529;
+            text-align: left;
+            background-color: #f5f8fa;
+        }
 
-.navbar-brand , .nav-link, .my-form, .login-form .filetable
-{
-    font-family: Raleway, sans-serif;
-}
+        .navbar-laravel {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .04);
+        }
 
-.my-form
-{
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-}
+        .navbar-brand,
+        .nav-link,
+        .my-form,
+        .login-form .filetable {
+            font-family: Raleway, sans-serif;
+        }
 
-.my-form .row
-{
-    margin-left: 0;
-    margin-right: 0;
-}
+        .my-form {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
 
-.login-form
-{
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-}
+        .my-form .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
 
-.login-form .row
-{
-    margin-left: 0;
-    margin-right: 0;
-}
+        .login-form {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
 
-</style>
-{% load static %}
-<link rel="icon" href="{% static 'favicon.ico' %}">
+        .login-form .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    </style>
+    {% load static %}
+    <link rel="icon" href="{% static 'favicon.ico' %}">
 </head>
-<body style="background-image: url('{% static "bgimg.jpg"%}')";>
 
-<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-    <div class="container">
-        <a class="navbar-brand" href="{% url 'index'%}">
-        <img src="{% static 'website.png'%}" width="30" height="30" class="d-inline-block align-top" alt="#">
-        CQRj</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<body style="background-image: url('{% static " imgicon.jpg"%}')";>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			
-			<ul class="navbar-nav me-auto">
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="{% url 'index'%}">Home</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" href={% url 'about'%}>About</a>
-				</li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="{% url 'menu' %}">Menu</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/accounts/upload/">Upload</a>
-                </li>
-        
-			</ul>
-            <ul class="navbar-nav ml-auto">
-                {% comment %} <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                </li> {% endcomment %}
-                <li>
-                <form class = "form-inline my-2 my-lg-0 " id='searchform' method="post" action="/accounts/fsearch/" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{form|crispy}}
-                    <input class = "form-control btn btn-white btn-md my-2 my-sm-0 ml-3" type = 'submit' value="Search">
-                </form>
-                </li>
-            </ul>               
+    <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index'%}">
+                <img src="{% static 'website.png'%}" width="30" height="30" class="d-inline-block align-top" alt="#">
+                CQRj</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'index'%}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href={% url 'about' %}>About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'menu' %}">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/accounts/upload/">Upload</a>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {% comment %} <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li> {% endcomment %}
+                    <li>
+                        <form class="form-inline my-2 my-lg-0 " id='searchform' method="post"
+                            action="/accounts/fsearch/" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{form|crispy}}
+                            <input class="form-control btn btn-white btn-md my-2 my-sm-0 ml-3" type='submit'
+                                value="Search">
+                        </form>
+                    </li>
+                </ul>
+
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-      <div class="filetable my-5"  style=" margin:auto;  width: 70%; padding: 1%">
-        <table class = "table table-hover ">
+    <div class="filetable my-5" style=" margin:auto;  width: 70%; padding: 1%">
+        <table class="table table-hover ">
             <thead>
-              <tr>
-                <th>Select</th>
-                <th>File Name</th>
-                <th>Download</th>
-              </tr>
+                <tr>
+                    <th>Select</th>
+                    <th>File Name</th>
+                    <th>Download</th>
+                </tr>
             </thead>
             <tbody>
-              {% for i in filelist %}
+                {% for i in filelist %}
                 <tr>
-                  <td><input type="checkbox" class="select" data-fid="{{i.ufilename}}"></td>
-                  <td>{{i.ufilename}}</td>
-                  <td><a href = '{{i.ufile.url}}' download> <span class = "fas fa-cloud-download-alt" style = "font-size: large;"></span>  </a></td>
+                    <td><input type="checkbox" class="select" data-fid="{{i.ufilename}}"></td>
+                    <td>{{i.ufilename}}</td>
+                    <td><a href='{{i.ufile.url}}' download> <span class="fas fa-cloud-download-alt"
+                                style="font-size: large;"></span> </a></td>
                 </tr>
-              {% endfor %}
+                {% endfor %}
             </tbody>
         </table>
-          <div class = "text-center">
-              <button type="button" id="delete" class="btn btn-danger" >Delete</button>
-          </div>
-      </div>
+        <div class="text-center">
+            <button type="button" id="delete" class="btn btn-danger">Delete</button>
+        </div>
+    </div>
 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-            <script type="text/javascript">
-            $('#delete').click(function(){
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $('#delete').click(function () {
             let catid = "";
-            $('input[type=checkbox]').each(function(){
-                 if($(this).is(":checked")){
-                   catid+=($(this).attr('data-fid'));
-                   catid+=" ";
-                 }
+            $('input[type=checkbox]').each(function () {
+                if ($(this).is(":checked")) {
+                    catid += ($(this).attr('data-fid'));
+                    catid += " ";
+                }
             });
             $.ajax(
-            {
-             headers: { "X-CSRFToken": '{{csrf_token}}' },
-             type:"POST",
-             url: "/accounts/fdelete/",
-             contentType: "application/json; charset=utf-8",
-             data: JSON.stringify({
-                 fnames: catid,
-              }),
-            success: function( data ) 
-            {
-                alert("successful");
-                location.reload(true);
-                
-            }
-            })
-            });
-            </script>
+                {
+                    headers: { "X-CSRFToken": '{{csrf_token}}' },
+                    type: "POST",
+                    url: "/accounts/fdelete/",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({
+                        fnames: catid,
+                    }),
+                    success: function (data) {
+                        alert("successful");
+                        location.reload(true);
+
+                    }
+                })
+        });
+    </script>
 
 </body>
-</html>
 
+</html>
