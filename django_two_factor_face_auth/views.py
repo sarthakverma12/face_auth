@@ -109,7 +109,7 @@ def fsearch(request):
             print("invalid")
         form = Searchform()
         context = {'filelist': nflist, 'form' : form}
-        return render(request, 'django_two_factor_face_auth/log.html', context)
+        return render(request, 'django_two_factor_face_auth/flist_new.html', context)
     
 @login_required()
 def fdownload(request, dfile, user):
