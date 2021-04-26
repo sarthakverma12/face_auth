@@ -70,8 +70,6 @@
             margin-left: 0;
             margin-right: 0;
         }
-
-            
     </style>
     <link rel="icon" href="{% static 'favicon.ico' %}">
 </head>
@@ -120,7 +118,12 @@
                         {% if messages %}
 
                         {% for message in messages %}
-                        <div class="alert alert-{{message.tags}}">{{message}}</div>
+                        {% if message.tags == "success" %}
+                        <div class="alert alert-success">{{message}}</div>
+                        {% endif %}
+                        {% if message.tags == "error" %}
+                        <div class="alert alert-danger">{{message}}</div>
+                        {% endif %}
                         {% endfor %}
 
                         {% endif %}

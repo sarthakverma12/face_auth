@@ -23,13 +23,14 @@ def register(request):
             password = form.cleaned_data['password2']
             user = authenticate(username=username, password=password)
             login(request, user)
-            messages.success(request,'Your are now logged in!')
+            messages.success(request,'Your account has been created, you can login now!')
             return redirect(settings.LOGIN_REDIRECT_URL)
     else:
         form = UserCreationForm()
 
     context = {'form': form}
-    return render(request, 'django_two_factor_face_auth/register.html', context)
+    return render(request,'django_two_factor_face_auth/register.html',context )             
+
 
 def face_login(request):
     if request.method == 'POST':
@@ -44,10 +45,11 @@ def face_login(request):
             user = face_id.authenticate(username=username, password=password, face_id=face_image)
             if user is not None:
                 login(request, user)
-                messages.success(request,'Your account has been created, you can login now!')
+                messages.success(request,'Your are now logged in!')
                 return redirect('/accounts/menu/')
             else:
-                form.add_error(None, "Username, password or face id didn't match.")
+                messages.error(request, 'Username, password or face id didn\'t match.')
+                # form.add_error(None, "Username, password or face id didn't match.")
     else:
         form = AuthenticationForm()
 

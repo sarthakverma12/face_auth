@@ -61,7 +61,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'index'%} " >
+            <a class="navbar-brand" href="{% url 'index'%} ">
                 <img src="{% static 'website.png'%}" width="30" height="30" class="d-inline-block align-top" alt="#">
                 CQRj</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -82,45 +82,35 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'profile' %}" data-toggle="tooltip" data-placement="bottom" title="User profile">
-                            <img src="{{user.profile.image.url}}" width="30" height="30" class="d-inline-block rounded-circle" style="border: 1px;" alt="#">
+                        <a class="nav-link active" href="{% url 'profile' %}" data-toggle="tooltip"
+                            data-placement="bottom" title="User profile">
+                            <img src="{{user.profile.image.url}}" width="30" height="30"
+                                class="d-inline-block rounded-circle" style="border: 1px;" alt="#">
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
-                    </li>
+                  
                 </ul>
 
             </div>
         </div>
     </nav>
 
-    <main class='card_'>
-        <div class="container pt-5">
-            <div class="card-deck mb-3 text-center">
-                <div class="card mb-4 box-shadow">
 
+ 
+
+    <main class='card_'>
+        <div class="container pt-2" style='width:50%'>
+            <div class="card-deck text-center">
+                <div class="card mb-3 box-shadow">
+                    <img class="card-img-top" src="{% static 'uploadjpg.jpg'%}" alt="Card image cap"  width='150' height='300'>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ </small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>20 users included</li>
-                            <li>10 GB of storage</li>
-                            <li>Priority email support</li>
-                            <li>Help center access</li>
-                        </ul>
                         <a role="button" class="btn btn-lg btn-block btn-outline-dark " href="/accounts/upload/">Upload
                             files</a>
                     </div>
                 </div>
-                <div class="card mb-4 box-shadow">
+                <div class="card mb-3 box-shadow">
+                <img class="card-img-top" src="{% static 'view.png'%}" alt="Card image cap"  width='150' height='300'>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>30 users included</li>
-                            <li>15 GB of storage</li>
-                            <li>Phone and email support</li>
-                            <li>Help center access</li>
-                        </ul>
                         <a role="button" class="btn btn-lg btn-block btn-outline-dark" href="/accounts/files/">View
                             files</a>
                     </div>
