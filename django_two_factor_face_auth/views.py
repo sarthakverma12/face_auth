@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.conf import settings
-from .forms import UserCreationForm, AuthenticationForm, UploadFileForm, Searchform
+from .forms import UserCreationForm, AuthenticationForm, UploadFileForm, Searchform, UserUpdateForm, ProfileUpdateForm
 from .authenticate import FaceIdAuthBackend
 from .utils import prepare_image
 from django.http import HttpResponse, FileResponse
@@ -11,6 +11,7 @@ from .utils import base64_file
 from .models import UserFile
 from io import BytesIO
 import json
+from django.contrib import messages
 
 def register(request):
     if  request.method == 'POST':
@@ -22,6 +23,7 @@ def register(request):
             password = form.cleaned_data['password2']
             user = authenticate(username=username, password=password)
             login(request, user)
+            messages.success(request,'Your are now logged in!')
             return redirect(settings.LOGIN_REDIRECT_URL)
     else:
         form = UserCreationForm()
@@ -42,6 +44,7 @@ def face_login(request):
             user = face_id.authenticate(username=username, password=password, face_id=face_image)
             if user is not None:
                 login(request, user)
+                messages.success(request,'Your account has been created, you can login now!')
                 return redirect('/accounts/menu/')
             else:
                 form.add_error(None, "Username, password or face id didn't match.")
@@ -124,3 +127,22 @@ def index(request):
 def about(request):
     if request.method == 'GET':
         return render(request, 'django_two_factor_face_auth/about.html',{'title':'About'})
+
+@login_required()
+def profile(request):
+    if request.method == "POST":
+        u_form=UserUpdateForm(request.POST, instance=request.user)
+        p_form=ProfileUpdateForm(request.POST,request.FILES ,instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request,'Your profile has been updated!')
+            return redirect('profile')
+    else:
+        u_form=UserUpdateForm(instance=request.user)
+        p_form=ProfileUpdateForm(instance=request.user.profile)
+    context={
+        'u_form':u_form,
+        'p_form':p_form
+    }
+    return render(request,'django_two_factor_face_auth/profile.html',context)        

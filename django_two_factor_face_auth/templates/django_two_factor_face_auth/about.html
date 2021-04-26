@@ -96,85 +96,91 @@
 
 <!-- <body style="background-image: url('{% static " bgimg.jpg"%}')";> -->
 
-    <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'index'%}">
-                <img src="{% static 'website.png'%}" width="30" height="30" class="d-inline-block align-top" alt="#">
-                CQRj
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index'%}">
+            <img src="{% static 'website.png'%}" width="30" height="30" class="d-inline-block align-top" alt="#">
+            CQRj
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'index'%}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href={% url 'about' %}>About</a>
-                    </li>
-                </ul>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'index'%}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href={% url 'about' %}>About</a>
+                </li>
+            </ul>
 
-                {% if user.is_authenticated %}
-                <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'profile' %}" data-toggle="tooltip" data-placement="bottom" title="User profile" >
+                        <img src="{{user.profile.image.url}}" width="30" height="30" class="d-inline-block rounded-circle" style="border: 1px;" alt="#">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'menu' %}">Menu</a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'menu' %}">Menu</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
+                </li>
 
-                </ul>
-                {% else %}
-                <ul class="navbar-nav ml-auto">
 
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'register' %}">Register</a>
-                    </li>
+            </ul>
+            {% else %}
+            <ul class="navbar-nav ml-auto">
 
-                </ul>
-                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'register' %}">Register</a>
+                </li>
 
-            </div>
+            </ul>
+            {% endif %}
+
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <div class="aboutus-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="aboutus-image float-left hidden-sm"><img
-                                src="https://devitems.com/preview/sopnovilla/sopnovilla/img/about/1.jpg" alt=""></div>
-                    </div>
-                    <div class="col-md-8 col-sm-6 col-xs-12">
-                        <div class="aboutus-content ">
-                            <h1>CQRj <span>aboutus</span></h1>
+<div class="aboutus-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="aboutus-image float-left hidden-sm"><img
+                            src="https://devitems.com/preview/sopnovilla/sopnovilla/img/about/1.jpg" alt=""></div>
+                </div>
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <div class="aboutus-content ">
+                        <h1>CQRj <span>aboutus</span></h1>
 
-                            <p>Cloud storage is a model of computer data storage in which the digital data is stored in
-                                logical pools, said to be on "the cloud". The physical storage spans multiple servers
-                                (sometimes in multiple locations), and the physical environment is typically owned and
-                                managed by a hosting company. These cloud storage providers are responsible for keeping
-                                the data available and accessible, and the physical environment protected and running.
-                                People and organizations buy or lease storage capacity from the providers to store user,
-                                organization, or application data.</p>
+                        <p>Cloud storage is a model of computer data storage in which the digital data is stored in
+                            logical pools, said to be on "the cloud". The physical storage spans multiple servers
+                            (sometimes in multiple locations), and the physical environment is typically owned and
+                            managed by a hosting company. These cloud storage providers are responsible for keeping
+                            the data available and accessible, and the physical environment protected and running.
+                            People and organizations buy or lease storage capacity from the providers to store user,
+                            organization, or application data.</p>
 
 
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-   
+
 </body>
 
 </html>

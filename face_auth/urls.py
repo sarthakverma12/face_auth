@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 admin.site.site_header = "CQRj Admin"
 admin.site.index_title = "CQRj Admin"
 admin.site.site_title = "Welcome to CQRj administration"
@@ -25,3 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('django_two_factor_face_auth.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

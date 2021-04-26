@@ -5,6 +5,7 @@ from .models import UserFaceImage, UserFile
 from .utils import base64_file
 from .encrypt import encrypti
 from io import BytesIO
+from .models import Profile
 
 class UserCreationForm(UserCreationForm):
     image = forms.CharField(widget=forms.HiddenInput())
@@ -33,4 +34,13 @@ class UploadFileForm(forms.Form):
 class Searchform(forms.Form):
     keyword = forms.CharField(label = "", widget=forms.TextInput(attrs={'placeholder': ''}))
 
-    
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+    class Meta:
+        model =User
+        fields=['username','email']
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model=Profile
+        fields=['image']         

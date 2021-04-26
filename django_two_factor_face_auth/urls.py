@@ -28,6 +28,7 @@ urlpatterns = [
     path('accounts/register/', views.register, name='register'),
     path('accounts/login/', views.face_login, name='login'),
     path('about/', views.about, name='about'),
+    path('profile/', views.profile, name='profile'),
     path('accounts/menu/', views.menu, name='menu'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/files/', views.viewfiles, name='viewfiles'),
@@ -39,5 +40,7 @@ urlpatterns = [
 
     # path('accounts/fdownload/', views.fdownload, name='fdownload'),
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+]  +  static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
