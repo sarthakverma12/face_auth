@@ -201,27 +201,3 @@
 </body>
 
 </html>
-
-
-<!-- this was before
-
-<div id="content-main" >
-
-<form id='face-login-form' method="post" action="{% url 'login' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-
-    {{ form }}
-
-    <input type="hidden" name="next" value="{{ next }}">
-</form>
-
-<button id="video-button">Next</button>
-<video id="screenshot-video" autoplay ></video>
-<button id="login-button" style="display: none;">Login</button>
-
-</div>
-{% load static %}
-<script type="text/javascript" src="{% static 'authentication/js/login.js' %}"></script>
-{% comment %} {% endblock %} {% endcomment %}
-
-                                                                                            -->

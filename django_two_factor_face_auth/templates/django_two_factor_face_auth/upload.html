@@ -123,23 +123,11 @@
         </div>
     </nav>
 
-    <!-- <div class="my-5"
-        style=" margin: auto; width: 40%; text-align: center; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; padding: 2%; border: solid; border-width: 1px;">
-        <form id='uploadform' method="post" action="/accounts/upload/" enctype="multipart/form-data">
-            <div class="form-group">
-                {% csrf_token %}
-                {{ form }}
-            </div>
-            <button type='submit' class="btn btn-success" style="width: 25%;"> Upload </button>
-        </form>
-    </div> -->
-
     <main class="card_">
         <div class="container px-10">
             <div class="card-deck mb-3 text-center">
                 <div class="card mb-4 box-shadow ">
                     <div class="card-body">
-                        <!-- <h2 class="card-title">Choose files</h2> -->
                         <form id='uploadform' method="post" action="/accounts/upload/" enctype="multipart/form-data">
                             <div class="form-group">
                                 {% csrf_token %}

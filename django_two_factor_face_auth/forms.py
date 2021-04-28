@@ -29,7 +29,6 @@ class AuthenticationForm(AuthenticationForm):
 
 class UploadFileForm(forms.Form):
     upfile = forms.FileField(label='', widget=forms.ClearableFileInput(attrs={'multiple': True  } ))
-    # 'class': 'form-control'
 
 class Searchform(forms.Form):
     keyword = forms.CharField(label = "", widget=forms.TextInput(attrs={'placeholder': ''}))

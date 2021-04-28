@@ -38,8 +38,6 @@ urlpatterns = [
     path('content/<str:user>/<str:dfile>/', views.fdownload, name='fdownload'),
     path('logout/',auth_views.LogoutView.as_view(template_name='django_two_factor_face_auth/logout.html'),name='logout'),
 
-    # path('accounts/fdownload/', views.fdownload, name='fdownload'),
-
 
 ]  +  static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

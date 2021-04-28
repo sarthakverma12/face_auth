@@ -131,6 +131,18 @@
     </nav>
 
     <div class="filetable my-5" style=" margin:auto;  width: 70%; padding: 1%">
+        {% if messages %}
+
+                        {% for message in messages %}
+                        {% if message.tags == "success" %}
+                        <div class="alert alert-success">{{message}}</div>
+                        {% endif %}
+                        {% if message.tags == "error" %}
+                        <div class="alert alert-danger">{{message}}</div>
+                        {% endif %}
+                        {% endfor %}
+
+        {% else %}
         <table class="table table-hover ">
             <thead>
                 <tr>
@@ -154,31 +166,8 @@
         <div class="text-center">
             <button type="button" id="delete" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
         </div>
-        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Launch demo modal
-        </button> -->
+        {% endif %}
     </div>
-
-
-
-    {% comment %} <div class="modal hide" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">You sure you want to delete the selected files!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
-                    <button type="button" id="delete" class="btn btn-outline-danger">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div> {% endcomment %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script type="text/javascript">

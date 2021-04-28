@@ -25,10 +25,6 @@ class UserFile(models.Model):
     def ufilename(self):
         return os.path.basename(self.ufile.name)
 
-@receiver(post_delete, sender=UserFile)
-def submission_delete(sender, instance, **kwargs):
-    instance.ufile.delete(False) 
-
 class Profile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     image = models.ImageField(default='profile_pics/default.png',upload_to='profile_pics')
@@ -63,19 +59,6 @@ class Profile(models.Model):
             img.thumbnail((300, 300))
 
         img.save(self.image.path)
-    # def __self(self):
-    #     return f'{self.user.username} Profile'
-
-    # def save(self):
-    #     super().save()
-
-    #     img = Image.open(self.image.path)
-
-    #     if img.height > 100 or img.width > 100:
-    #         output_size = (100, 100)
-    #         img.thumbnail(output_size)
-    #         img.save(self.image.path)
-
 
 @receiver(post_save,sender=User)
 def create_profile(sender,instance,created,**kwargs):
@@ -85,11 +68,3 @@ def create_profile(sender,instance,created,**kwargs):
 @receiver(post_save,sender=User)
 def save_profile(sender,instance,**kwargs):
     instance.profile.save()
-
-@receiver(post_delete, sender=UserFaceImage)
-def submission_delete(sender, instance, **kwargs):
-    instance.image.delete(False) 
-
-@receiver(post_delete, sender=Profile)
-def submission_delete(sender, instance, **kwargs):
-    instance.image.delete(False) 

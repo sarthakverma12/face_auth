@@ -49,7 +49,6 @@ def face_login(request):
                 return redirect('/accounts/menu/')
             else:
                 messages.error(request, 'Username, password or face id didn\'t match.')
-                # form.add_error(None, "Username, password or face id didn't match.")
     else:
         form = AuthenticationForm()
 
@@ -84,6 +83,8 @@ def viewfiles(request):
         flist = UserFile.objects.filter(user = request.user)
         form = Searchform()
         context = {'filelist': flist , 'form' : form} 
+        if len(flist)==0:
+          messages.error(request, "No files found!!")
         return render(request, 'django_two_factor_face_auth/flist_new.html', context)
 
 @login_required()
@@ -96,6 +97,7 @@ def fdelete(request):
         sf = (UserFile.objects.filter(user = request.user))
         for f in sf:
             if f.ufilename() in files:
+                f.ufile.delete()
                 f.delete()
         return HttpResponse(content)
 
@@ -114,6 +116,8 @@ def fsearch(request):
             print("invalid")
         form = Searchform()
         context = {'filelist': nflist, 'form' : form}
+        if len(nflist)==0:
+          messages.error(request, "No files found!!")
         return render(request, 'django_two_factor_face_auth/flist_new.html', context)
     
 @login_required()
