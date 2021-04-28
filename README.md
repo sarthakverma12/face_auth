@@ -3,4 +3,4 @@ After activating your virtual environment and entering into this project's direc
 Step 1: Enter the following command\
         pip install -r requirements.txt\
 Step 2: To run the server enter the following command\
-        python manage.py runserver\
+        python manage.py runserver
